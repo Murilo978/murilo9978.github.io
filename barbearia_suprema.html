@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Barbearia Suprema - Estilo, confiança e masculinidade. Cortes profissionais, barba impecável e atendimento premium.">
+    <meta name="keywords" content="barbearia, corte masculino, barba, barbearia premium, grooming masculino">
+    <title>Barbearia Suprema | Estilo é Atitude</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+     <style>
+         /* Pré-carrega a fonte Bebas Neue para evitar flash */
+        @font-face {
+            font-family: 'Bebas Neue';
+            font-display: block;
+        }
+    </style>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;600;700&display=block" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --preto: #000000;
+            --dourado: #C6A664;
+            --branco: #FFFFFF;
+            --cinza-escuro: #1a1a1a;
+            --cinza-medio: #2a2a2a;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--preto);
+            color: var(--branco);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Bebas Neue', cursive;
+            letter-spacing: 2px;
+        }
+
+        /* NAVEGAÇÃO */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 5%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid var(--dourado);
+        }
+
+        nav.scrolled {
+            padding: 1rem 5%;
+            box-shadow: 0 5px 20px rgba(198, 166, 100, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-family: 'Bebas Neue', cursive;
+            color: var(--dourado);
+            letter-spacing: 3px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--branco);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--dourado);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--dourado);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--dourado);
+            transition: all 0.3s;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=1600') center/cover;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            color: var(--dourado);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: var(--dourado);
+            color: var(--preto);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary:hover {
+            background: var(--branco);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(198, 166, 100, 0.5);
+        }
+
+        /* SEÇÕES */
+        section {
+            padding: 6rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            text-align: center;
+            color: var(--dourado);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background: var(--dourado);
+            margin: 1rem auto;
+        }
+
+        /* SERVIÇOS */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: var(--cinza-escuro);
+            padding: 2.5rem;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(198, 166, 100, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-card:hover {
+            border-color: var(--dourado);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(198, 166, 100, 0.3);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--dourado);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--dourado);
+        }
+
+        .service-card p {
+            margin-bottom: 1rem;
+            color: #ccc;
+        }
+
+        .price {
+            font-size: 1.8rem;
+            color: var(--dourado);
+            font-weight: 700;
+        }
+
+        /* GALERIA */
+        .gallery {
+            background: var(--cinza-escuro);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            height: 300px;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(198, 166, 100, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        /* EQUIPE */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+        }
+
+        .team-member {
+            text-align: center;
+            position: relative;
+        }
+
+        .team-photo {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border: 3px solid var(--dourado);
+            margin-bottom: 1.5rem;
+            transition: all 0.4s;
+        }
+
+        .team-member:hover .team-photo {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(198, 166, 100, 0.4);
+        }
+
+        .team-member h3 {
+            font-size: 2rem;
+            color: var(--dourado);
+            margin-bottom: 0.5rem;
+        }
+
+        .specialty {
+            color: var(--dourado);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        /* AGENDAMENTO */
+        .booking {
+            background: var(--cinza-escuro);
+        }
+
+        .booking-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--cinza-medio);
+            padding: 3rem;
+            border: 2px solid var(--dourado);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--dourado);
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            background: var(--preto);
+            border: 1px solid var(--dourado);
+            color: var(--branco);
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--branco);
+        }
+
+        /* CONTATO */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .contact-info {
+            background: var(--cinza-escuro);
+            padding: 2rem;
+            border-left: 4px solid var(--dourado);
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            color: var(--dourado);
+            margin-bottom: 1rem;
+        }
+
+        .contact-item {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-icon {
+            color: var(--dourado);
+            font-size: 1.5rem;
+        }
+
+        .map-container {
+            height: 400px;
+            background: var(--cinza-medio);
+            border: 2px solid var(--dourado);
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--preto);
+            padding: 3rem 5%;
+            text-align: center;
+            border-top: 2px solid var(--dourado);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-links a {
+            color: var(--dourado);
+            font-size: 2rem;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--branco);
+            transform: translateY(-5px);
+        }
+
+        /* WHATSAPP BUTTON */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6);
+        }
+
+        .whatsapp-btn svg {
+            width: 35px;
+            height: 35px;
+            fill: white;
+        }
+
+        /* BACK TO TOP */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--dourado);
+            border: none;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+        }
+
+        .back-to-top:hover {
+            background: var(--branco);
+            transform: translateY(-5px);
+        }
+
+        /* ANIMAÇÕES */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        /* MODAL CONFIRMAÇÃO */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: var(--cinza-escuro);
+            padding: 3rem;
+            border: 3px solid var(--dourado);
+            text-align: center;
+            max-width: 500px;
+            animation: fadeInUp 0.5s ease;
+        }
+
+        .modal-content h2 {
+            color: var(--dourado);
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+        }
+
+        .modal-content button {
+            margin-top: 2rem;
+        }
+
+        /* RESPONSIVO */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(0, 0, 0, 0.98);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                transform: translateX(-100%);
+                transition: transform 0.3s;
+            }
+
+            .nav-links.active {
+                transform: translateX(0);
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            section {
+                padding: 4rem 5%;
+            }
+
+            .whatsapp-btn {
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .back-to-top {
+                bottom: 90px;
+                left: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVEGAÇÃO -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">SUPREMA</div>
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#equipe">Equipe</a></li>
+                <li><a href="#agendamento">Agendamento</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="fade-in">BARBEARIA SUPREMA</h1>
+            <p class="fade-in">Estilo é atitude. Corte com quem entende.</p>
+            <a href="#agendamento" class="btn-primary fade-in">Agende seu horário</a>
+        </div>
+    </section>
+
+    <!-- SERVIÇOS -->
+    <section id="servicos">
+        <h2 class="section-title">NOSSOS SERVIÇOS</h2>
+        <div class="services-grid">
+            <div class="service-card fade-in">
+                <div class="service-icon">✂️</div>
+                <h3>Corte Premium</h3>
+                <p>Corte personalizado com técnicas modernas e acabamento impecável</p>
+                <div class="price">R$ 60,00</div>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">✏️</div>
+                <h3>Barba & Desenho</h3>
+                <p>Modelagem completa com navalha e toalhas quentes</p>
+                <div class="price">R$ 45,00</div>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">👁️</div>
+                <h3>Sobrancelha</h3>
+                <p>Design masculino profissional para realçar seu olhar</p>
+                <div class="price">R$ 25,00</div>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">👑</div>
+                <h3>Pacote VIP</h3>
+                <p>Corte + Barba + Sobrancelha + Tratamento capilar</p>
+                <div class="price">R$ 120,00</div>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 3rem;">
+            <p style="font-size: 1.3rem; color: var(--dourado); font-style: italic;">
+                "Transforme seu visual hoje mesmo."
+            </p>
+        </div>
+    </section>
+
+    <!-- GALERIA -->
+    <section class="gallery" id="galeria">
+        <h2 class="section-title">AMBIENTE</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=600" alt="Ambiente da barbearia">
+                <div class="gallery-overlay">
+                    <h3 style="font-size: 2rem; color: #000;">AMBIENTE EXCLUSIVO</h3>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=600" alt="Cadeiras de barbeiro">
+                <div class="gallery-overlay">
+                    <h3 style="font-size: 2rem; color: #000;">EQUIPAMENTOS PREMIUM</h3>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=600" alt="Produtos profissionais">
+                <div class="gallery-overlay">
+                    <h3 style="font-size: 2rem; color: #000;">PRODUTOS PROFISSIONAIS</h3>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=600" alt="Detalhes da barbearia">
+                <div class="gallery-overlay">
+                    <h3 style="font-size: 2rem; color: #000;">ATENÇÃO AOS DETALHES</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EQUIPE -->
+    <section id="equipe">
+        <h2 class="section-title">NOSSA EQUIPE</h2>
+        <div class="team-grid">
+            <div class="team-member fade-in">
+                <img src="https://images.unsplash.com/photo-1621592484082-2d05b1290d7a?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=387" alt="Barbeiro" class="team-photo">
+                <h3>RODRIGO SILVA</h3>
+                <p class="specialty">Especialista em Cortes Modernos</p>
+                <p>10 anos de experiência transformando o visual de homens que buscam estilo e sofisticação.</p>
+            </div>
+            <div class="team-member fade-in">
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400" alt="Barbeiro" class="team-photo">
+                <h3>MARCELO SANTOS</h3>
+                <p class="specialty">Master em Barba & Navalha</p>
+                <p>Especializado em barbas clássicas e modelagem com navalha tradicional.</p>
+            </div>
+            <div class="team-member fade-in">
+                <img src="https://images.pexels.com/photos/7781850/pexels-photo-7781850.jpeg" alt="Barbeiro" class="team-photo">
+                <h3>BRUNO COSTA</h3>
+                <p class="specialty">Expert em Design Capilar</p>
+                <p>Criatividade e precisão para cortes ousados e personalizados.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- AGENDAMENTO -->
+    <section class="booking" id="agendamento">
+        <h2 class="section-title">AGENDE SEU HORÁRIO</h2>
+        <form class="booking-form" id="bookingForm" onsubmit="handleSubmit(event)">
+            <div class="form-group">
+                <label for="name">Nome Completo</label>
+                <input type="text" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Telefone/WhatsApp</label>
+                <input type="tel" id="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="service">Serviço</label>
+                <select id="service" required>
+                    <option value="">Selecione um serviço</option>
+                    <option value="corte">Corte Premium - R$ 60</option>
+                    <option value="barba">Barba & Desenho - R$ 45</option>
+                    <option value="sobrancelha">Sobrancelha - R$ 25</option>
+                    <option value="vip">Pacote VIP - R$ 120</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="date">Data</label>
+                <input type="date" id="date" required>
+            </div>
+            <div class="form-group">
+                <label for="time">Horário</label>
+                <input type="time" id="time" required>
+            </div>
+            <button type="submit" class="btn-primary" style="width: 100%;">CONFIRMAR AGENDAMENTO</button>
+        </form>
+    </section>
+
+    <!-- CONTATO -->
+    <section id="contato">
+        <h2 class="section-title">CONTATO</h2>
+        <div class="contact-grid">
+            <div>
+                <div class="contact-info">
+                    <h3>📍 ENDEREÇO</h3>
+                    <p>Rua do Estilo, 123<br>Centro - São Paulo/SP<br>CEP: 01234-567</p>
+                </div>
+                <div class="contact-info">
+                    <h3>📞 TELEFONE</h3>
+                    <p>(11) 98765-4321<br>(11) 3456-7890</p>
+                </div>
+                <div class="contact-info">
+                    <h3>🕐 HORÁRIO</h3>
+                    <p>Segunda a Sexta: 9h às 20h<br>Sábado: 9h às 18h<br>Domingo: Fechado</p>
+                </div>
+            </div>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.1976405124434!2d-46.65382068502179!3d-23.56148098468058!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da0aa315%3A0xd59f9431f2c9776a!2sAv.%20Paulista%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1234567890123!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="social-links">
+            <a href="#" aria-label="Instagram">📷</a>
+            <a href="#" aria-label="Facebook">📘</a>
+            <a href="#" aria-label="WhatsApp">💬</a>
+        </div>
+        <p>&copy; 2025 Barbearia Suprema. Todos os direitos reservados.</p>
+        <p style="color: var(--dourado); margin-top: 1rem;">Estilo, confiança e masculinidade.</p>
+    </footer>
+
+    <!-- BOTÃO WHATSAPP -->
+    <a href="https://wa.me/5511987654321" class="whatsapp-btn" target="_blank" aria-label="WhatsApp">
+        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 8.206-2.113c2.343 1.275 4.993 1.963 7.794 1.963 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.5c-2.547 0-5.043-0.719-7.188-2.081l-0.516-0.294-5.344 1.375 1.431-5.313-0.325-0.538c-1.506-2.481-2.306-5.344-2.306-8.281 0-8.556 6.956-15.513 15.513-15.513s15.513 6.956 15.513 15.513c0 8.556-6.956 15.513-15.513 15.513zM23.294 19.175c-0.244-0.119-1.444-0.706-1.669-0.787-0.225-0.081-0.387-0.119-0.55 0.119s-0.631 0.787-0.775 0.95c-0.144 0.162-0.287 0.181-0.531 0.063-0.244-0.119-1.031-0.381-1.963-1.206-0.725-0.644-1.213-1.438-1.356-1.681-0.144-0.244-0.013-0.375 0.106-0.5 0.106-0.106 0.244-0.287 0.363-0.431s0.162-0.244 0.244-0.406c0.081-0.162 0.038-0.306-0.019-0.431-0.056-0.119-0.55-1.325-0.756-1.813-0.2-0.475-0.406-0.412-0.55-0.419-0.144-0.006-0.306-0.006-0.469-0.006s-0.431 0.063-0.656 0.306c-0.225 0.244-0.862 0.85
